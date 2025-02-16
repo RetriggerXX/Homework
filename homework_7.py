@@ -2,6 +2,7 @@
 from datetime import datetime, timedelta
 import json
 import pandas
+import re
 
 #Task 1
 file = open("input.txt", "w+")
@@ -62,3 +63,23 @@ print(data)
 #Task 6
 data_for_csv = pandas.DataFrame(data)
 data_for_csv.to_csv('data.csv', index=False)
+
+#Task 7
+my_dict = {}
+with open('7.txt', 'r') as file:
+    for _ in file:
+        line = list(file.readline().strip().split(" "))
+        for i in range(len(line)):
+            if line[i] in my_dict:
+                my_dict[line[i]] += 1
+            else:
+                my_dict[line[i]] = 1
+
+    max_key = max(my_dict, key=my_dict.get)
+    print(max_key,my_dict[max_key])
+
+#Task 8
+with open('8.txt', 'r') as file:
+    lst = re.findall(r'[A-Za-z]|\d+', file.read())
+    for i in range(0,len(lst),2):
+        print(lst[i]*int(lst[i+1]),end="")
