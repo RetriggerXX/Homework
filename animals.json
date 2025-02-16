@@ -1,0 +1,38 @@
+{
+    "Lion": {
+        "Antelope": 80,
+        "Zebra": 90,
+        "Buffalo": 100,
+        "Giraffe": 85,
+        "Wildebeest": 75,
+        "Gazelle": 60,
+        "Hare": 50,
+        "Small mammals": 40,
+        "Birds": 30,
+        "Carrion": 20
+    },
+    "Elephant": {
+        "Grass": 80,
+        "Fruits": 90,
+        "Bark": 70,
+        "Leaves": 85,
+        "Roots": 60,
+        "Crops": 50,
+        "Vegetables": 65,
+        "Tree branches": 55,
+        "Grain": 40,
+        "Watermelon": 95
+    },
+    "Penguin": {
+        "Fish": 90,
+        "Krill": 80,
+        "Squid": 70,
+        "Shrimp": 75,
+        "Clams": 60,
+        "Octopus": 85,
+        "Algae": 50,
+        "Seals": 95,
+        "Penguin eggs": 100,
+        "Plankton": 65
+    }
+}
