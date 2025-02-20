@@ -1,0 +1,129 @@
+-- 1)
+-- INSERT INTO actors (name, surname, age, live_in, bank_accaunt_budiet, status, sex)  
+-- VALUES  
+-- ('Johny', 'Depp', 42, 'Boston', 4500000, 'single', 'male'),  
+-- ('Robert', 'Downey', 58, 'Los Angeles', 300000000, 'married', 'male'),  
+-- ('Scarlett', 'Johansson', 39, 'New York', 165000000, 'divorced', 'female'),  
+-- ('Chris', 'Hemsworth', 40, 'Melbourne', 130000000, 'married', 'male'),  
+-- ('Jennifer', 'Lawrence', 33, 'Louisville', 160000000, 'married', 'female'),  
+-- ('Leonardo', 'DiCaprio', 49, 'Los Angeles', 260000000, 'single', 'male'),  
+-- ('Tom', 'Holland', 27, 'London', 25000000, 'single', 'male'),  
+-- ('Angelina', 'Jolie', 48, 'Los Angeles', 120000000, 'divorced', 'female'),  
+-- ('Brad', 'Pitt', 60, 'Los Angeles', 400000000, 'divorced', 'male'),  
+-- ('Will', 'Smith', 55, 'Los Angeles', 350000000, 'married', 'male'),  
+-- ('Emma', 'Watson', 34, 'Paris', 85000000, 'single', 'female'),  
+-- ('Keanu', 'Reeves', 59, 'Toronto', 380000000, 'single', 'male'),  
+-- ('Natalie', 'Portman', 42, 'Jerusalem', 90000000, 'married', 'female'),  
+-- ('Denzel', 'Washington', 69, 'New York', 280000000, 'married', 'male'),  
+-- ('Meryl', 'Streep', 74, 'New York', 100000000, 'married', 'female'),  
+-- ('Joaquin', 'Phoenix', 49, 'Moskow', 60000000, 'married', 'male');  
+-- 
+-- 2)
+-- ALTER TABLE actors ADD COLUMN count_movies INTEGER DEFAULT 0;
+-- 
+-- UPDATE actors
+-- SET count_movies = CASE
+--     WHEN last_name = 'Downey' THEN 15
+--     WHEN last_name = 'Johansson' THEN 12
+--     WHEN last_name = 'Hemsworth' THEN 8
+--     WHEN last_name = 'Lawrence' THEN 10
+--     WHEN last_name = 'DiCaprio' THEN 20
+--     WHEN last_name = 'Holland' THEN 5
+--     WHEN last_name = 'Jolie' THEN 25
+--     WHEN last_name = 'Pitt' THEN 18
+--     WHEN last_name = 'Smith' THEN 30
+--     WHEN last_name = 'Watson' THEN 11
+--     WHEN last_name = 'Reeves' THEN 17
+--     WHEN last_name = 'Portman' THEN 9
+--     WHEN last_name = 'Washington' THEN 22
+--     WHEN last_name = 'Streep' THEN 14
+--     WHEN last_name = 'Phoenix' THEN 16
+--     ELSE count_movies  -- Оставить текущее значение для остальных актеров
+-- END;
+-- 
+-- 
+-- 3)
+-- ALTER TABLE actors RENAME COLUMN surname TO last_name;
+-- ALTER TABLE actors ADD COLUMN country_in text DEFAULT 'uknown';
+-- UPDATE actors
+-- SET country_in = CASE
+--     WHEN last_name = 'Downey' THEN 'USA'
+--     WHEN last_name = 'Johansson' THEN 'USA'
+--     WHEN last_name = 'Hemsworth' THEN 'Australia'
+--     WHEN last_name = 'Lawrence' THEN 'USA'
+--     WHEN last_name = 'DiCaprio' THEN 'USA'
+--     WHEN last_name = 'Holland' THEN 'Australia'
+--     WHEN last_name = 'Jolie' THEN 'USA'
+--     WHEN last_name = 'Pitt' THEN 'USA'
+--     WHEN last_name = 'Smith' THEN 'USA'
+--     WHEN last_name = 'Watson' THEN 'UK'
+--     WHEN last_name = 'Reeves' THEN 'Canada'
+--     WHEN last_name = 'Portman' THEN 'Israel'
+--     WHEN last_name = 'Washington' THEN 'USA'
+--     WHEN last_name = 'Streep' THEN 'USA'
+--     WHEN last_name = 'Phoenix' THEN 'USA'
+-- END;
+-- 
+-- 
+--4) 
+-- 
+-- SELECT * FROM actors
+-- WHERE "age" > 26 
+-- 
+-- 5)
+-- SELECT * FROM actors
+-- ORDER BY bank_accaunt_budiet DESC; 
+-- 
+-- 6)
+-- SELECT COUNT(*) AS total_actors FROM actors
+-- WHERE "age" > 55
+-- 
+-- 
+-- 7)
+-- SELECT * FROM actors
+-- WHERE "bank_accaunt_budiet" > 10000000 and "count_movies"> 22
+-- 
+-- 
+-- 8)
+-- SELECT * FROM actors
+-- WHERE "live_in" = 'Moskow'
+-- 
+-- 
+-- 
+-- 9)
+-- SELECT * FROM actors
+-- WHERE name like 'A%';
+-- 
+-- 
+-- 
+-- 10)
+-- SELECT * FROM actors
+-- WHERE "age" > 30 and "sex" = 'female' and "live_in" = 'USA'
+-- 
+-- 
+-- 11)
+-- SELECT * FROM actors
+-- WHERE "live_in" = 'None'
+-- 
+-- 
+-- 12)
+-- SELECT * FROM actors
+-- WHERE "bank_accaunt_budiet" = 0
+-- 
+-- 
+-- 13)
+-- SELECT name, last_name, bank_accaunt_budiet
+-- FROM actors
+-- ORDER BY bank_accaunt_budiet DESC
+-- LIMIT 5;
+-- 
+-- 
+-- 14)
+-- SELECT name, last_name, age
+-- FROM actors
+-- ORDER BY age DESC
+-- 
+-- 
+-- 15)
+-- SELECT * FROM actors
+-- WHERE ("status" = 'divorced' or "status" = 'single') and "age" < 50
