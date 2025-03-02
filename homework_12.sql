@@ -1,0 +1,87 @@
+-- SELECT directors.name, directors.surname, movies.name_movie, movies.budjet 
+-- FROM directors
+-- inner  JOIN movies on directors.director_id = movies.director_id 
+-- GROUP by directors.director_id
+-- ORDER BY budjet DESC
+-- LIMIT 10
+-- 
+-- SELECT actors.name, actors.surname
+-- from actors
+-- left join actors_movies on actors_movies.actors_id = actors.actors_id
+-- where actors_movies.actors_id IS NULL
+-- UNION
+-- SELECT directors.name, directors.surname
+-- from directors
+-- left join movies on movies.movie_id = directors.director_id
+-- where movies.director_id IS NULL;
+-- 
+-- SELECT directors.name, directors.surname, movies.name_movie, movies.budjet
+-- From directors
+-- INNER JOIN movies on movies.director_id = directors.director_id
+-- WHERE movies.budjet > 150000000
+-- UNION
+-- SELECT actors.name, actors.surname, movies.name_movie AS movie_name, movies.budjet
+-- FROM actors
+-- INNER JOIN actors_movies ON actors_movies.actors_id = actors.actors_id
+-- INNER JOIN movies ON movies.movie_id = actors_movies.movies_id
+-- WHERE movies.budjet > 150000000
+-- ORDER by budjet desc
+-- 
+-- SELECT directors.name, directors.surname, movies.name_movie, movies.release
+-- from  directors
+-- INNER JOIN movies on movies.director_id = directors.director_id
+-- WHERE movies.release < 2000
+-- GROUP by directors.surname
+-- ORDER by movies.release
+-- 
+-- SELECT movies.name_movie, movies.rating, movies.release, directors.name, directors.surname
+-- FROM movies
+-- INNER JOIN directors on directors.director_id = movies.director_id
+-- WHERE (SELECT avg(movies.rating)
+-- 	FROM movies) < movies.rating and movies.release < 2000
+-- 
+-- SELECT actors.name, actors.surname, count(DISTINCT colleges.actors_id) as known_actors
+-- FROM actors_movies
+-- JOIN actors_movies as colleges
+-- 	on actors_movies.movies_id = colleges.movies_id
+-- 	and actors_movies.actors_id <> colleges.actors_id
+-- JOIN actors
+-- 	on actors_movies.actors_id = actors.actors_id
+-- GROUP by actors.name
+-- HAVING count(DISTINCT colleges.actors_id) >=2
+--
+--
+-- SELECT actors.name, actors.surname, movies.name_movie, movies.budjet
+-- FROM actors_movies
+-- INNER JOIN actors on actors.actors_id = actors_movies.actors_id
+-- INNER JOIN movies on movies.movie_id = actors_movies.movies_id
+-- GROUP by actors.name, actors.surname
+-- ORDER by movies.budjet DESC
+-- LIMIT 5
+--
+--
+-- SELECT actors.name, actors.surname, movies.name_movie
+-- FROM actors_movies
+-- INNER JOIN actors on actors.actors_id = actors_movies.actors_id
+-- INNER JOIN movies on movies.movie_id = actors_movies.movies_id
+-- GROUP by actors.name
+-- HAVING count(actors.actors_id) = 1
+-- UNION 
+-- SELECT directors.name, directors.surname, movies.name_movie
+-- FROM movies
+-- INNER JOIN directors on directors.director_id = movies.director_id
+-- GROUP by directors.name
+-- HAVING count(directors.director_id) = 1
+--
+-- SELECT actors.name, actors.surname,
+-- CASE
+-- 	WHEN sum(movies.budjet)  > 150000000 THEN sum(movies.budjet* 0.20)
+-- 	WHEN sum(movies.budjet)  > 100000000 THEN sum(movies.budjet* 0.15)
+-- 	ELSE sum(movies.budjet* 0.10)
+-- END AS money
+-- FROM actors_movies
+-- INNER JOIN actors on actors.actors_id = actors_movies.actors_id
+-- INNER JOIN movies on movies.movie_id = actors_movies.movies_id
+-- GROUP by actors.actors_id
+-- ORDER BY money DESC
+
